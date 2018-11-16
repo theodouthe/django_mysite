@@ -1,9 +1,11 @@
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-        <!-- not to be used as url is entered directly and it is fastidious to update it -->
+        <!-- 1) Not to be used as url is entered directly and it is fastidious to update it -->
         <!-- <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li> -->
-        <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+        <!-- <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li> -->
+        <!-- 2) adding a prefix to url in order to select app -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
